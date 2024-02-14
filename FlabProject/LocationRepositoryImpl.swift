@@ -10,7 +10,7 @@ import CoreLocation
 import Foundation
 
 final class LocationRepositoryImpl: LocationRepository {
-    let manager: CLLocationManager = CLLocationManager()
+    private let manager: CLLocationManager = CLLocationManager()
     
     private var cancellables: Set<AnyCancellable> = []
     private var coordinate: Coordinate?
@@ -22,10 +22,6 @@ final class LocationRepositoryImpl: LocationRepository {
     init() {}
     
     func requestAuthorization() {
-        self.manager.requestWhenInUseAuthorization()
-    }
-    
-    func start() {
         self.coordinate = Coordinate()
         self.manager.delegate = self.coordinate
         self.coordinate?.transform()
@@ -38,6 +34,10 @@ final class LocationRepositoryImpl: LocationRepository {
             }
             .store(in: &cancellables)
         
+        self.manager.requestWhenInUseAuthorization()
+    }
+    
+    func start() {
         self.manager.startUpdatingLocation()
     }
     
@@ -50,6 +50,7 @@ final class LocationRepositoryImpl: LocationRepository {
     }
     
     final class Coordinate: NSObject {
+        var continuation: AsyncStream<CLLocationCoordinate2D>.Continuation?
         private let publisher: PassthroughSubject<Output, Never> = .init()
         
         func transform() -> AnyPublisher<Output, Never> {
