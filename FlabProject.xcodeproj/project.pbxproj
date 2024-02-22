@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		334A2B312B7A21EB00045644 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A2B302B7A21EB00045644 /* LocationRepository.swift */; };
+		334A2B332B7A226000045644 /* LocationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A2B322B7A226000045644 /* LocationRepositoryImpl.swift */; };
+		334A2B3E2B7B882200045644 /* RunningUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A2B3D2B7B882200045644 /* RunningUseCase.swift */; };
+		334A2B402B7B8B6900045644 /* RunningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A2B3F2B7B8B6900045644 /* RunningService.swift */; };
+		334A2B422B7B97C300045644 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A2B412B7B97C300045644 /* Location.swift */; };
 		337AF4202B6D1DC20023D786 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337AF41F2B6D1DC20023D786 /* AppDelegate.swift */; };
 		337AF4222B6D1DC20023D786 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337AF4212B6D1DC20023D786 /* SceneDelegate.swift */; };
 		337AF4242B6D1DC20023D786 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337AF4232B6D1DC20023D786 /* ViewController.swift */; };
@@ -36,6 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		334A2B302B7A21EB00045644 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
+		334A2B322B7A226000045644 /* LocationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryImpl.swift; sourceTree = "<group>"; };
+		334A2B3D2B7B882200045644 /* RunningUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningUseCase.swift; sourceTree = "<group>"; };
+		334A2B3F2B7B8B6900045644 /* RunningService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningService.swift; sourceTree = "<group>"; };
+		334A2B412B7B97C300045644 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		337AF41C2B6D1DC20023D786 /* FlabProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlabProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		337AF41F2B6D1DC20023D786 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		337AF4212B6D1DC20023D786 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,10 +110,15 @@
 			isa = PBXGroup;
 			children = (
 				337AF41F2B6D1DC20023D786 /* AppDelegate.swift */,
+				334A2B412B7B97C300045644 /* Location.swift */,
+				334A2B3D2B7B882200045644 /* RunningUseCase.swift */,
+				334A2B3F2B7B8B6900045644 /* RunningService.swift */,
+				334A2B302B7A21EB00045644 /* LocationRepository.swift */,
+				334A2B322B7A226000045644 /* LocationRepositoryImpl.swift */,
 				337AF4212B6D1DC20023D786 /* SceneDelegate.swift */,
 				337AF4232B6D1DC20023D786 /* ViewController.swift */,
-				337AF4252B6D1DC20023D786 /* Main.storyboard */,
 				337AF4282B6D1DC30023D786 /* Assets.xcassets */,
+				337AF4252B6D1DC20023D786 /* Main.storyboard */,
 				337AF42A2B6D1DC30023D786 /* LaunchScreen.storyboard */,
 				337AF42D2B6D1DC30023D786 /* Info.plist */,
 			);
@@ -258,7 +273,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				334A2B332B7A226000045644 /* LocationRepositoryImpl.swift in Sources */,
+				334A2B312B7A21EB00045644 /* LocationRepository.swift in Sources */,
+				334A2B422B7B97C300045644 /* Location.swift in Sources */,
 				337AF4242B6D1DC20023D786 /* ViewController.swift in Sources */,
+				334A2B3E2B7B882200045644 /* RunningUseCase.swift in Sources */,
+				334A2B402B7B8B6900045644 /* RunningService.swift in Sources */,
 				337AF4202B6D1DC20023D786 /* AppDelegate.swift in Sources */,
 				337AF4222B6D1DC20023D786 /* SceneDelegate.swift in Sources */,
 			);
