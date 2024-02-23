@@ -17,6 +17,9 @@
 		334A2BAD2B878F6F00045644 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 334A2BAC2B878F6F00045644 /* FirebaseAnalyticsSwift */; };
 		334A2BAF2B878F6F00045644 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 334A2BAE2B878F6F00045644 /* FirebaseCrashlytics */; };
 		334A2BB12B878FE900045644 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 334A2BB02B878FE900045644 /* GoogleService-Info.plist */; };
+		334A2BB32B8820BA00045644 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A2BB22B8820BA00045644 /* RootViewController.swift */; };
+		334A2BB52B888CE300045644 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A2BB42B888CE300045644 /* HistoryViewController.swift */; };
+		334A2BB72B888CFC00045644 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A2BB62B888CFC00045644 /* ChallengeViewController.swift */; };
 		337AF4202B6D1DC20023D786 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337AF41F2B6D1DC20023D786 /* AppDelegate.swift */; };
 		337AF4222B6D1DC20023D786 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337AF4212B6D1DC20023D786 /* SceneDelegate.swift */; };
 		337AF4242B6D1DC20023D786 /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337AF4232B6D1DC20023D786 /* RunningViewController.swift */; };
@@ -52,6 +55,9 @@
 		334A2B412B7B97C300045644 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		334A2B492B7CDD7A00045644 /* RunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningView.swift; sourceTree = "<group>"; };
 		334A2BB02B878FE900045644 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		334A2BB22B8820BA00045644 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		334A2BB42B888CE300045644 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		334A2BB62B888CFC00045644 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		337AF41C2B6D1DC20023D786 /* FlabProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlabProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		337AF41F2B6D1DC20023D786 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		337AF4212B6D1DC20023D786 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,8 +123,10 @@
 		334A2B472B7CDA3800045644 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				334A2B492B7CDD7A00045644 /* RunningView.swift */,
-				337AF4232B6D1DC20023D786 /* RunningViewController.swift */,
+				334A2BB82B888D2900045644 /* Root */,
+				334A2BB92B888D2F00045644 /* Running */,
+				334A2BBA2B888D3800045644 /* History */,
+				334A2BBB2B888D3F00045644 /* Challenge */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -129,6 +137,39 @@
 				334A2B322B7A226000045644 /* LocationRepositoryImpl.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		334A2BB82B888D2900045644 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				334A2BB22B8820BA00045644 /* RootViewController.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		334A2BB92B888D2F00045644 /* Running */ = {
+			isa = PBXGroup;
+			children = (
+				334A2B492B7CDD7A00045644 /* RunningView.swift */,
+				337AF4232B6D1DC20023D786 /* RunningViewController.swift */,
+			);
+			path = Running;
+			sourceTree = "<group>";
+		};
+		334A2BBA2B888D3800045644 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				334A2BB42B888CE300045644 /* HistoryViewController.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		334A2BBB2B888D3F00045644 /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				334A2BB62B888CFC00045644 /* ChallengeViewController.swift */,
+			);
+			path = Challenge;
 			sourceTree = "<group>";
 		};
 		337AF4132B6D1DC20023D786 = {
@@ -322,14 +363,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				334A2BB32B8820BA00045644 /* RootViewController.swift in Sources */,
 				334A2B332B7A226000045644 /* LocationRepositoryImpl.swift in Sources */,
 				334A2B312B7A21EB00045644 /* LocationRepository.swift in Sources */,
 				334A2B422B7B97C300045644 /* Location.swift in Sources */,
 				337AF4242B6D1DC20023D786 /* RunningViewController.swift in Sources */,
+				334A2BB52B888CE300045644 /* HistoryViewController.swift in Sources */,
 				334A2B3E2B7B882200045644 /* RunningUseCase.swift in Sources */,
 				334A2B402B7B8B6900045644 /* RunningService.swift in Sources */,
 				337AF4202B6D1DC20023D786 /* AppDelegate.swift in Sources */,
 				334A2B4A2B7CDD7A00045644 /* RunningView.swift in Sources */,
+				334A2BB72B888CFC00045644 /* ChallengeViewController.swift in Sources */,
 				337AF4222B6D1DC20023D786 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
