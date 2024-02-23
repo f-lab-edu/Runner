@@ -12,10 +12,10 @@
 		334A2B3E2B7B882200045644 /* RunningUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A2B3D2B7B882200045644 /* RunningUseCase.swift */; };
 		334A2B402B7B8B6900045644 /* RunningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A2B3F2B7B8B6900045644 /* RunningService.swift */; };
 		334A2B422B7B97C300045644 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A2B412B7B97C300045644 /* Location.swift */; };
+		334A2B4A2B7CDD7A00045644 /* RunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334A2B492B7CDD7A00045644 /* RunningView.swift */; };
 		337AF4202B6D1DC20023D786 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337AF41F2B6D1DC20023D786 /* AppDelegate.swift */; };
 		337AF4222B6D1DC20023D786 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337AF4212B6D1DC20023D786 /* SceneDelegate.swift */; };
-		337AF4242B6D1DC20023D786 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337AF4232B6D1DC20023D786 /* ViewController.swift */; };
-		337AF4272B6D1DC20023D786 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 337AF4252B6D1DC20023D786 /* Main.storyboard */; };
+		337AF4242B6D1DC20023D786 /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337AF4232B6D1DC20023D786 /* RunningViewController.swift */; };
 		337AF4292B6D1DC30023D786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 337AF4282B6D1DC30023D786 /* Assets.xcassets */; };
 		337AF42C2B6D1DC30023D786 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 337AF42A2B6D1DC30023D786 /* LaunchScreen.storyboard */; };
 		337AF4372B6D1DC30023D786 /* FlabProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337AF4362B6D1DC30023D786 /* FlabProjectTests.swift */; };
@@ -46,11 +46,11 @@
 		334A2B3D2B7B882200045644 /* RunningUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningUseCase.swift; sourceTree = "<group>"; };
 		334A2B3F2B7B8B6900045644 /* RunningService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningService.swift; sourceTree = "<group>"; };
 		334A2B412B7B97C300045644 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		334A2B492B7CDD7A00045644 /* RunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningView.swift; sourceTree = "<group>"; };
 		337AF41C2B6D1DC20023D786 /* FlabProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlabProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		337AF41F2B6D1DC20023D786 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		337AF4212B6D1DC20023D786 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		337AF4232B6D1DC20023D786 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		337AF4262B6D1DC20023D786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		337AF4232B6D1DC20023D786 /* RunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
 		337AF4282B6D1DC30023D786 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		337AF42B2B6D1DC30023D786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		337AF42D2B6D1DC30023D786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +86,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		334A2B452B7CDA1C00045644 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				337AF41F2B6D1DC20023D786 /* AppDelegate.swift */,
+				337AF4212B6D1DC20023D786 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		334A2B462B7CDA3100045644 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				334A2B3D2B7B882200045644 /* RunningUseCase.swift */,
+				334A2B3F2B7B8B6900045644 /* RunningService.swift */,
+				334A2B302B7A21EB00045644 /* LocationRepository.swift */,
+				334A2B412B7B97C300045644 /* Location.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		334A2B472B7CDA3800045644 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				334A2B492B7CDD7A00045644 /* RunningView.swift */,
+				337AF4232B6D1DC20023D786 /* RunningViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		334A2B482B7CDD4300045644 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				334A2B322B7A226000045644 /* LocationRepositoryImpl.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		337AF4132B6D1DC20023D786 = {
 			isa = PBXGroup;
 			children = (
@@ -109,16 +146,11 @@
 		337AF41E2B6D1DC20023D786 /* FlabProject */ = {
 			isa = PBXGroup;
 			children = (
-				337AF41F2B6D1DC20023D786 /* AppDelegate.swift */,
-				334A2B412B7B97C300045644 /* Location.swift */,
-				334A2B3D2B7B882200045644 /* RunningUseCase.swift */,
-				334A2B3F2B7B8B6900045644 /* RunningService.swift */,
-				334A2B302B7A21EB00045644 /* LocationRepository.swift */,
-				334A2B322B7A226000045644 /* LocationRepositoryImpl.swift */,
-				337AF4212B6D1DC20023D786 /* SceneDelegate.swift */,
-				337AF4232B6D1DC20023D786 /* ViewController.swift */,
+				334A2B452B7CDA1C00045644 /* App */,
+				334A2B472B7CDA3800045644 /* Presentation */,
+				334A2B462B7CDA3100045644 /* Domain */,
+				334A2B482B7CDD4300045644 /* Data */,
 				337AF4282B6D1DC30023D786 /* Assets.xcassets */,
-				337AF4252B6D1DC20023D786 /* Main.storyboard */,
 				337AF42A2B6D1DC30023D786 /* LaunchScreen.storyboard */,
 				337AF42D2B6D1DC30023D786 /* Info.plist */,
 			);
@@ -248,7 +280,7 @@
 			files = (
 				337AF42C2B6D1DC30023D786 /* LaunchScreen.storyboard in Resources */,
 				337AF4292B6D1DC30023D786 /* Assets.xcassets in Resources */,
-				337AF4272B6D1DC20023D786 /* Main.storyboard in Resources */,
+				334A2BB12B878FE900045644 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,10 +308,11 @@
 				334A2B332B7A226000045644 /* LocationRepositoryImpl.swift in Sources */,
 				334A2B312B7A21EB00045644 /* LocationRepository.swift in Sources */,
 				334A2B422B7B97C300045644 /* Location.swift in Sources */,
-				337AF4242B6D1DC20023D786 /* ViewController.swift in Sources */,
+				337AF4242B6D1DC20023D786 /* RunningViewController.swift in Sources */,
 				334A2B3E2B7B882200045644 /* RunningUseCase.swift in Sources */,
 				334A2B402B7B8B6900045644 /* RunningService.swift in Sources */,
 				337AF4202B6D1DC20023D786 /* AppDelegate.swift in Sources */,
+				334A2B4A2B7CDD7A00045644 /* RunningView.swift in Sources */,
 				337AF4222B6D1DC20023D786 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,14 +350,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		337AF4252B6D1DC20023D786 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				337AF4262B6D1DC20023D786 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		337AF42A2B6D1DC30023D786 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -465,10 +490,9 @@
 				DEVELOPMENT_TEAM = DH9CS7PA5D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlabProject/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "알약두봉지";
+				INFOPLIST_KEY_CFBundleDisplayName = Runner;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -495,10 +519,9 @@
 				DEVELOPMENT_TEAM = DH9CS7PA5D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlabProject/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "알약두봉지";
+				INFOPLIST_KEY_CFBundleDisplayName = Runner;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
