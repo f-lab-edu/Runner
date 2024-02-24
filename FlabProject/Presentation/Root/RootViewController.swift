@@ -26,5 +26,6 @@ final class RootViewController: UITabBarController {
         challengeViewController.tabBarItem = .init(title: "챌린지", image: .init(systemName: "flame"), tag: 2)
         
         viewControllers = [historyViewController, runningViewController, challengeViewController]
+        selectedIndex = 1
     }
 }

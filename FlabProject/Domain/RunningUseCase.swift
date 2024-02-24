@@ -14,6 +14,7 @@ enum RunningOutput {
 
 protocol RunningUseCase {
     func transform() -> AnyPublisher<RunningOutput, Never>
+    
     func start()
     func pause()
     func stop()

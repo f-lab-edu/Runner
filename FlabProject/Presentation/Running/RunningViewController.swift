@@ -15,6 +15,7 @@ final class RunningViewController: UIViewController {
         return view
     }()
     
+    private var isAuthorized: Bool = false
     private var locations: [Location] = .init()
     private var cancellables: Set<AnyCancellable> = .init()
     
@@ -39,7 +40,7 @@ final class RunningViewController: UIViewController {
             .sink { event in
                 switch event {
                 case let .didChangeAuthorization(isAuthorized):
-                    break
+                    self.isAuthorized = isAuthorized
                 case let .didUpdate(location):
                     self.locations.append(location)
                 }
@@ -61,10 +62,24 @@ final class RunningViewController: UIViewController {
             runningView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
+    
+    private func presentBottomSheet() {
+        let runningBottomSheetView = RunningBottonSheetView()
+        let bottomSheetViewcontroller = BottomSheetViewController(content: runningBottomSheetView)
+        let navigationController = UINavigationController(rootViewController: bottomSheetViewcontroller)
+        navigationController.modalPresentationStyle = .pageSheet
+        
+        if let sheet = navigationController.sheetPresentationController {
+            sheet.detents = [.large()]
+        }
+        
+        present(navigationController, animated: true, completion: {})
+    }
 }
 
 extension RunningViewController: RunningViewProtocol {
     func tapStartButton() {
         service.start()
+        presentBottomSheet()
     }
 }
