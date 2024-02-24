@@ -9,7 +9,8 @@ import Combine
 
 enum RunningOutput {
     case didChangeAuthorization(isAuthorized: Bool)
-    case didUpdate(location: Location)
+    case didUpdateLocation(Location)
+    case didUpdateDistance(Int)
 }
 
 protocol RunningUseCase {

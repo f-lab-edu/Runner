@@ -9,6 +9,8 @@ import Combine
 import UIKit
 
 final class RunningViewController: UIViewController {
+    private lazy var runningBottomSheetView = RunningBottonSheetView()
+    
     private lazy var runningView: RunningView = {
         let view = RunningView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -16,7 +18,6 @@ final class RunningViewController: UIViewController {
     }()
     
     private var isAuthorized: Bool = false
-    private var locations: [Location] = .init()
     private var cancellables: Set<AnyCancellable> = .init()
     
     private let service: RunningUseCase
@@ -41,8 +42,10 @@ final class RunningViewController: UIViewController {
                 switch event {
                 case let .didChangeAuthorization(isAuthorized):
                     self.isAuthorized = isAuthorized
-                case let .didUpdate(location):
-                    self.locations.append(location)
+                case let .didUpdateLocation(location):
+                    self.runningBottomSheetView.update(location: location)
+                case let .didUpdateDistance(distance):
+                    self.runningBottomSheetView.update(distance: Double(distance))
                 }
             }
             .store(in: &cancellables)
@@ -64,7 +67,6 @@ final class RunningViewController: UIViewController {
     }
     
     private func presentBottomSheet() {
-        let runningBottomSheetView = RunningBottonSheetView()
         let bottomSheetViewcontroller = BottomSheetViewController(content: runningBottomSheetView)
         let navigationController = UINavigationController(rootViewController: bottomSheetViewcontroller)
         navigationController.modalPresentationStyle = .pageSheet
