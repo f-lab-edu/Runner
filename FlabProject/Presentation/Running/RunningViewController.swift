@@ -11,6 +11,16 @@ import UIKit
 final class RunningViewController: UIViewController {
     private lazy var runningBottomSheetView = RunningBottonSheetView()
     
+    private lazy var testCrashButton: UIButton = {
+        let button = UIButton(type: .roundedRect)
+        button.frame = CGRect(x: 20, y: 50, width: 100, height: 30)
+        button.setTitle("Test Crash", for: [])
+        let action = UIAction { [weak self] _ in self?.sendCrash() }
+        button.addAction(action, for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private lazy var runningView: RunningView = {
         let view = RunningView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -57,12 +67,18 @@ final class RunningViewController: UIViewController {
         runningView.configure(delegate: self)
         
         view.addSubview(runningView)
+        view.addSubview(testCrashButton)
         
         NSLayoutConstraint.activate([
             runningView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             runningView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             runningView.heightAnchor.constraint(equalTo: view.heightAnchor),
             runningView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            testCrashButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            testCrashButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50)
         ])
     }
     
@@ -76,6 +92,11 @@ final class RunningViewController: UIViewController {
         }
         
         present(navigationController, animated: true, completion: {})
+    }
+    
+    private func sendCrash() {
+        let numbers = [0]
+        let _ = numbers[1]
     }
 }
 
