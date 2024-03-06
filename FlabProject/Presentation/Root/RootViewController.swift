@@ -8,6 +8,15 @@
 import UIKit
 
 final class RootViewController: UITabBarController {
+    private lazy var locationRepository = LocationRepositoryImpl()
+    private lazy var pedometerRepository = PedometerRepositoryImpl()
+    
+    private lazy var runningService = RunningService(locationRepository: locationRepository, pedometerRepository: pedometerRepository)
+    
+    private lazy var historyViewController = HistoryViewController()
+    private lazy var runningViewController = RunningViewController(service: runningService)
+    private lazy var challengeViewController = ChallengeViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubViews()
@@ -16,13 +25,8 @@ final class RootViewController: UITabBarController {
     private func addSubViews() {
         view.backgroundColor = .systemBackground
         
-        let historyViewController = HistoryViewController()
         historyViewController.tabBarItem = .init(title: "기록", image: .init(systemName: "clock"), tag: 0)
-        
-        let runningViewController = RunningViewController()
         runningViewController.tabBarItem = .init(title: "러닝", image: .init(systemName: "figure.run"), tag: 1)
-        
-        let challengeViewController = ChallengeViewController()
         challengeViewController.tabBarItem = .init(title: "챌린지", image: .init(systemName: "flame"), tag: 2)
         
         viewControllers = [historyViewController, runningViewController, challengeViewController]

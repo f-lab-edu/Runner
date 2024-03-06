@@ -5,13 +5,19 @@
 //  Created by 김혜지 on 2/23/24.
 //
 
+import MapKit
 import UIKit
 
+protocol RunningBottomSheetViewProtocol: AnyObject {
+    func tapPauseButton()
+    func tapStopButton()
+}
+
 final class RunningBottonSheetView: UIView {
-    private lazy var mapView: UIView = {
-        let view = UIView()
+    private lazy var mapView: MKMapView = {
+        let view = MKMapView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .blue
+        view.showsUserLocation = true
         view.layer.cornerRadius = 10
         return view
     }()
@@ -73,7 +79,7 @@ final class RunningBottonSheetView: UIView {
         return button
     }()
     
-    private var locations: [Location] = .init()
+    private weak var delegate: RunningBottomSheetViewProtocol?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -132,12 +138,19 @@ final class RunningBottonSheetView: UIView {
         ])
     }
     
-    func update(location: Location) {
-        locations.append(location)
+    func configure(delegate: RunningBottomSheetViewProtocol) {
+        self.delegate = delegate
     }
     
-    func update(distance: Double) {
-        distanceLabel.text = "\(distance)km"
+    func update(location: Location) {
+        let center = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        let region = MKCoordinateRegion(center: center, span: span)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    func update(distance: String) {
+        distanceLabel.text = distance
     }
     
     func update(time: String) {
@@ -145,11 +158,11 @@ final class RunningBottonSheetView: UIView {
     }
     
     func tapPauseButton() {
-        
+        delegate?.tapPauseButton()
     }
     
     func tapStopButton() {
-        
+        delegate?.tapStopButton()
     }
 }
 

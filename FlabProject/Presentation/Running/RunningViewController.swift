@@ -6,33 +6,22 @@
 //
 
 import Combine
+import MapKit
 import UIKit
 
 final class RunningViewController: UIViewController {
     private lazy var runningBottomSheetView = RunningBottonSheetView()
-    
-    private lazy var testCrashButton: UIButton = {
-        let button = UIButton(type: .roundedRect)
-        button.frame = CGRect(x: 20, y: 50, width: 100, height: 30)
-        button.setTitle("Test Crash", for: [])
-        let action = UIAction { [weak self] _ in self?.sendCrash() }
-        button.addAction(action, for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var runningView: RunningView = {
-        let view = RunningView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private lazy var runningView: RunningView = RunningView()
     
     private var isAuthorized: Bool = false
     private var cancellables: Set<AnyCancellable> = .init()
     
     private let service: RunningUseCase
     
-    init(service: RunningUseCase = RunningService()) {
+    private var seconds: Int = 0
+    private var timer: Timer?
+    
+    init(service: RunningUseCase) {
         self.service = service
         super.init(nibName: nil, bundle: nil)
     }
@@ -41,12 +30,18 @@ final class RunningViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func loadView() {
+        view = runningView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSubViews()
+        configure()
     }
     
     private func configure() {
+        runningView.configure(delegate: self)
+        
         service.transform()
             .sink { event in
                 switch event {
@@ -55,34 +50,26 @@ final class RunningViewController: UIViewController {
                 case let .didUpdateLocation(location):
                     self.runningBottomSheetView.update(location: location)
                 case let .didUpdateDistance(distance):
-                    self.runningBottomSheetView.update(distance: Double(distance))
+                    self.runningBottomSheetView.update(distance: distance.description)
                 }
             }
             .store(in: &cancellables)
     }
-
-    private func addSubViews() {
-        view.backgroundColor = .systemBackground
-        
-        runningView.configure(delegate: self)
-        
-        view.addSubview(runningView)
-        view.addSubview(testCrashButton)
-        
-        NSLayoutConstraint.activate([
-            runningView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            runningView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            runningView.heightAnchor.constraint(equalTo: view.heightAnchor),
-            runningView.widthAnchor.constraint(equalTo: view.widthAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            testCrashButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            testCrashButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50)
-        ])
+    
+    private func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            self.seconds += 1
+            self.runningBottomSheetView.update(time: self.seconds.description)
+        }
+    }
+    
+    private func stopTimer() {
+        timer?.invalidate()
     }
     
     private func presentBottomSheet() {
+        runningBottomSheetView.configure(delegate: self)
+        
         let bottomSheetViewcontroller = BottomSheetViewController(content: runningBottomSheetView)
         let navigationController = UINavigationController(rootViewController: bottomSheetViewcontroller)
         navigationController.modalPresentationStyle = .pageSheet
@@ -93,16 +80,26 @@ final class RunningViewController: UIViewController {
         
         present(navigationController, animated: true, completion: {})
     }
-    
-    private func sendCrash() {
-        let numbers = [0]
-        let _ = numbers[1]
-    }
 }
 
 extension RunningViewController: RunningViewProtocol {
     func tapStartButton() {
         service.start()
+        startTimer()
         presentBottomSheet()
     }
+}
+
+extension RunningViewController: RunningBottomSheetViewProtocol {
+    func tapPauseButton() {
+        service.pause()
+    }
+    
+    func tapStopButton() {
+        service.stop()
+    }
+}
+
+extension RunningViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {}
 }

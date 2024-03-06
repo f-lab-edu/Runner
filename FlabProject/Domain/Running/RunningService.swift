@@ -15,8 +15,8 @@ final class RunningService: RunningUseCase {
     private let pedometerRepository: PedometerRepository
     
     init(
-        locationRepository: LocationRepository = LocationRepositoryImpl(),
-        pedometerRepository: PedometerRepository = PedometerRepositoryImpl()
+        locationRepository: LocationRepository,
+        pedometerRepository: PedometerRepository
     ) {
         self.locationRepository = locationRepository
         self.pedometerRepository = pedometerRepository

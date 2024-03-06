@@ -19,21 +19,7 @@ final class BottomSheetViewController<Content: UIView>: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        addSubViews()
-    }
-    
-    private func addSubViews() {
-        content.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(content)
-        
-        NSLayoutConstraint.activate([
-            content.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            content.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            content.heightAnchor.constraint(equalTo: view.heightAnchor),
-            content.widthAnchor.constraint(equalTo: view.widthAnchor)
-        ])
+    override func loadView() {
+        view = content
     }
 }
