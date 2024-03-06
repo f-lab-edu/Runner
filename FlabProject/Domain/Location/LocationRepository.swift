@@ -20,4 +20,3 @@ protocol LocationRepository {
     func pause()
     func stop()
 }
-

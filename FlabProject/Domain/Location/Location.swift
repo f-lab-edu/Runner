@@ -6,8 +6,8 @@
 //
 
 struct Location {
-    private let latitude: Double
-    private let longitude: Double
+    let latitude: Double
+    let longitude: Double
     
     init(latitude: Double, longitude: Double) {
         self.latitude = latitude
